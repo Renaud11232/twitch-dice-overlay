@@ -1,0 +1,16 @@
+{
+  "nbDiceBoxes": 5,
+  "physics": {
+    "gravity_multiplier": 600,
+    "baseScale": 100,
+    "strength": 2
+  },
+  "twitch": {
+    "channels": [
+      "foxyrealm"
+    ]
+  },
+  "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
+  "triggerType": "announcement",
+  "diceBotName": "streamelements"
+}
