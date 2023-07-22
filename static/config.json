@@ -7,10 +7,11 @@
   },
   "twitch": {
     "channels": [
-      "foxyrealm"
+      "sweetholyheck"
     ]
   },
   "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
   "triggerType": "announcement",
-  "diceBotName": "streamelements"
+  "diceBotName": "streamelements",
+  "chatType": "twitch"
 }

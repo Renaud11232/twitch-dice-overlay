@@ -1,7 +1,7 @@
 import "./styles.css";
 import DiceBox from "@3d-dice/dice-box-threejs";
-
-const tmi = require("tmi.js");
+import {TwitchChat} from "./providers/TwitchChat";
+import {KickChat} from "./providers/KickChat";
 
 fetchConfig().then(config => {
     const DICE_BOXES = [];
@@ -18,37 +18,22 @@ fetchConfig().then(config => {
         DICE_BOXES.push(diceBox);
     }
 
-    const client = new tmi.Client(config.twitch);
-    client.connect();
-
-    if(config.triggerType === "announcement") {
-        client.on("usernotice", (msgid, channel, tags, message) => {
-            if(msgid === "announcement") {
-                handleInput(tags, message);
-            }
-        });
-    } else if (config.triggerType === "message") {
-        client.on("message", (channel, tags, message) => {
-            handleInput(tags, message);
-        });
+    let chat;
+    if(config.chatType === "twitch") {
+        chat = new TwitchChat(config);
+    } else if (config.chatType === "kick") {
+        chat = new KickChat(config);
     }
+    chat.onRoll = function(rollValue) {
+        let diceBox = DICE_BOXES[currentDiceBoxIndex];
+        currentDiceBoxIndex = (currentDiceBoxIndex + 1) % MAX_DICE_BOXES;
 
-    function handleInput(tags, message) {
-        if(tags["display-name"].toLowerCase() !== config.diceBotName) {
-            return;
-        }
-        let messageMatch = message.match(config.messagePattern);
-        if(messageMatch) {
-            let diceBox = DICE_BOXES[currentDiceBoxIndex];
-            currentDiceBoxIndex = (currentDiceBoxIndex + 1) % MAX_DICE_BOXES;
-
-            diceBox.roll(`1d20@${messageMatch[1]}`)
-                .then(() => {
-                    setTimeout(() => {
-                        diceBox.clearDice();
-                    }, config.diceTimeout === undefined ? 5000 : config.diceTimeout);
-                });
-        }
+        diceBox.roll(`1d20@${rollValue}`)
+            .then(() => {
+                setTimeout(() => {
+                    diceBox.clearDice();
+                }, config.diceTimeout === undefined ? 5000 : config.diceTimeout);
+            });
     }
 });
 
