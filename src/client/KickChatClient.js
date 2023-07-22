@@ -1,3 +1,4 @@
+//JS OO port of https://github.com/retconned/kickchat-client
 export class KickChatClient {
 
     constructor() {
