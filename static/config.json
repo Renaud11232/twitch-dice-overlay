@@ -5,13 +5,13 @@
     "baseScale": 100,
     "strength": 2
   },
-  "twitch": {
+  "kick": {
     "channels": [
-      "sweetholyheck"
+      "xyz"
     ]
   },
   "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
   "triggerType": "announcement",
   "diceBotName": "streamelements",
-  "chatType": "twitch"
+  "chatType": "kick"
 }
