@@ -1,17 +1,21 @@
 {
-  "nbDiceBoxes": 5,
-  "physics": {
-    "gravity_multiplier": 600,
-    "baseScale": 100,
-    "strength": 2
+  "chat": {
+    "kick": {
+      "channels": [
+        "xyz"
+      ]
+    },
+    "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
+    "triggerType": "announcement",
+    "diceBotName": "streamelements",
+    "chatType": "kick"
   },
-  "kick": {
-    "channels": [
-      "xyz"
-    ]
-  },
-  "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
-  "triggerType": "announcement",
-  "diceBotName": "streamelements",
-  "chatType": "kick"
+  "dice": {
+    "nbDiceBoxes": 5,
+    "physics": {
+      "gravity_multiplier": 600,
+      "baseScale": 100,
+      "strength": 2
+    }
+  }
 }
