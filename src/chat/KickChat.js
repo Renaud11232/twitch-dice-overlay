@@ -1,7 +1,7 @@
-import {Chat} from "./Chat";
+import {AbstractChat} from "./AbstractChat";
 import {KickChatClient} from "../client/KickChatClient";
 
-export class KickChat extends Chat {
+export class KickChat extends AbstractChat {
 
     constructor(config) {
         super(config);

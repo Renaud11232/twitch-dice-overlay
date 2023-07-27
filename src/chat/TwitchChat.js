@@ -1,7 +1,7 @@
-import {Chat} from "./Chat";
+import {AbstractChat} from "./AbstractChat";
 
 const tmi = require("tmi.js");
-export class TwitchChat extends Chat {
+export class TwitchChat extends AbstractChat {
 
     constructor(config) {
         super(config);
