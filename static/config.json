@@ -1,10 +1,6 @@
 {
   "chat": {
-    "kick": {
-      "channels": [
-        "xyz"
-      ]
-    },
+    "channel": "chatrooms.276687.v2",
     "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
     "triggerType": "announcement",
     "diceBotName": "streamelements",
