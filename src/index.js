@@ -1,17 +1,11 @@
 import "./styles.css";
-import {TwitchChat} from "./providers/TwitchChat";
-import {KickChat} from "./providers/KickChat";
 import {Dice} from "./dice/Dice";
+import {Chat} from "./providers/Chat";
 
 fetchConfig().then(config => {
     const dice = new Dice(config);
 
-    let chat;
-    if(config.chatType === "twitch") {
-        chat = new TwitchChat(config);
-    } else if (config.chatType === "kick") {
-        chat = new KickChat(config);
-    }
+    const chat = Chat.getInstance(config);
 
     chat.onRoll = function(rollValue) {
         dice.roll(`1d20@${rollValue}`);

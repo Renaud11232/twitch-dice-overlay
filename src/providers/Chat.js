@@ -1,7 +1,11 @@
+import {TwitchChat} from "./TwitchChat";
+import {KickChat} from "./KickChat";
+
 export class Chat {
 
     constructor(config) {
         this.config = config;
+        this.onRoll = null;
     }
 
     handleMessage(content, author) {
@@ -34,5 +38,16 @@ export class Chat {
             return parseInt(messageMatch[1]);
         }
         return null;
+    }
+
+    static getInstance(config) {
+        switch(chat.chatType) {
+            case "twitch":
+                return new TwitchChat(config);
+            case "kick":
+                return new KickChat(config);
+            default:
+                throw new Error(`Unsupported chat type : ${config.chatType}`);
+        }
     }
 }
