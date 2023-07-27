@@ -1,6 +1,6 @@
 import "./styles.css";
 import {Dice} from "./dice/Dice";
-import {Chat} from "./providers/Chat";
+import {Chat} from "./chat/Chat";
 
 fetchConfig().then(config => {
     const dice = new Dice(config);
