@@ -32,7 +32,7 @@ export class AbstractChat {
         }
         let messageMatch = message.match(this.config.messagePattern);
         if(messageMatch) {
-            return parseInt(messageMatch[1]);
+            return parseInt(messageMatch.groups.roll);
         }
         return null;
     }
