@@ -2,7 +2,7 @@ import {TwitchChat} from "./TwitchChat";
 import {KickChat} from "./KickChat";
 
 function getInstance(config) {
-    switch(config.chatType) {
+    switch(config.type) {
         case "twitch":
             return new TwitchChat(config);
         case "kick":

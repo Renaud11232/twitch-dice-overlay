@@ -1,10 +1,11 @@
 {
   "chat": {
-    "channel": "chatrooms.276687.v2",
+    "type": "kick",
+    "channel": "chatrooms.3649670.v2",
+    "__channel": "sweetholyheck",
     "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (\\d+)!$",
     "triggerType": "announcement",
-    "diceBotName": "streamelements",
-    "chatType": "kick"
+    "diceBotName": "streamelements"
   },
   "dice": {
     "nbDiceBoxes": 5,

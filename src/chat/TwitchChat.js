@@ -5,7 +5,9 @@ export class TwitchChat extends AbstractChat {
 
     constructor(config) {
         super(config);
-        this.client = new tmi.Client(config.twitch);
+        this.client = new tmi.Client({
+            channels: [config.channel]
+        });
         this.client.connect();
         this.client.on("message", (channel, tags, message) => {
             this.handleMessage(message, tags["display-name"]);
