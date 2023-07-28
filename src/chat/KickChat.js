@@ -9,11 +9,17 @@ export class KickChat extends AbstractChat {
             cluster: "us2",
             enabledTransports: ["ws"]
         });
-        const channel = this.pusher.subscribe(config.channel);
-        channel.bind("App\\Events\\ChatMessageEvent", data => {
-            this.handleMessage(data.content, data.sender.username);
-        });
+        fetchKickChannel(config.channel).then(kickChannel => {
+            const chatroom = this.pusher.subscribe(`chatrooms.${kickChannel.chatroom.id}.v2`);
+            chatroom.bind("App\\Events\\ChatMessageEvent", data => {
+                this.handleMessage(data.content, data.sender.username);
+            });
+            const channel = this.pusher.subscribe(`channel.${kickChannel.chatroom.channel_id}`);
+        })
     }
+}
 
-
+async function fetchKickChannel(channelName) {
+    const response = await fetch(`https://kick.com/api/v2/channels/${channelName}`);
+    return await response.json();
 }

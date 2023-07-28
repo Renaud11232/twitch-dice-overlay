@@ -1,8 +1,8 @@
 {
   "chat": {
-    "type": "twitch",
-    "__channel": "chatrooms.3649670.v2",
-    "channel": "sweetholyheck",
+    "type": "kick",
+    "channel": "sweetholyhell",
+    "__channel": "sweetholyheck",
     "messagePattern": "^.*? lance le dé et tombe sur un\\.\\.\\. (?<roll>\\d+)!$",
     "triggerType": "announcement",
     "diceBotName": "streamelements"
